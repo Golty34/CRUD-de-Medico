@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Registrar un nuevo medico</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+  <ion-content>
+    <ion-item>
+      <ion-label position="stacked">Codigo tarjeta Profesional</ion-label>
+        <ion-input [(ngModel)]="detalle.iD" type="number"  >
+        </ion-input>
+    </ion-item>
+  
+    <ion-item>
+        <ion-label position="stacked">Especialidad</ion-label>
+          <ion-input [(ngModel)]="detalle.Especialidad" type="text" >
+          </ion-input>
+    </ion-item>
+  
+    <ion-item>
+        <ion-label  position="stacked" >Años de Experiencia</ion-label>
+        <ion-input [(ngModel)]="detalle.Exp" type="number" >
+        </ion-input>
+    </ion-item>
+  
+    <ion-item>
+        <ion-label position="stacked">Consultorio</ion-label>
+          <ion-input [(ngModel)]="detalle.Consultorio" type="text">
+          </ion-input>
+    </ion-item>
+    
+
+    <ion-item >
+      <ion-label>¿Atiende a domicilio?</ion-label>
+        <ion-select  [(ngModel)]="detalle.Domicilio">
+          <ion-select-option value="si">Si</ion-select-option>
+          <ion-select-option value="no">No</ion-select-option>
+        </ion-select>
+      </ion-item>
+    
+    <ion-button expand="block" fill="outline" (click)="crearMedico()">
+      CREAR MEDICO
+    </ion-button>
+    
+</ion-content>

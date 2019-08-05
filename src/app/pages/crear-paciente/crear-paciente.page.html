@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Registrar un nuevo paciente</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="stacked">Nombre</ion-label>
+      <ion-input [(ngModel)]="detalle.Nombre" type="text" >
+      </ion-input>
+  </ion-item>
+
+  <ion-item>
+      <ion-label position="stacked">Apellido</ion-label>
+        <ion-input [(ngModel)]="detalle.Apellido" type="text" >
+        </ion-input>
+  </ion-item>
+
+  <ion-item>
+      <ion-label>Fecha Nacimiento</ion-label>
+      <ion-datetime [(ngModel)]="detalle.fechaNacimiento" displayFormat="D / MM / YYYY" pickerFormat="DD MMM YYYY" >
+      </ion-datetime>
+  </ion-item>
+
+  <ion-item>
+      <ion-label position="stacked">Identificación</ion-label>
+        <ion-input [(ngModel)]="detalle.iD" type="number" >
+        </ion-input>
+  </ion-item>
+
+  <ion-item>
+      <ion-label position="stacked">Valor Cuota</ion-label>
+        <ion-input [(ngModel)]="detalle.Cuota" type="number" >
+        </ion-input>
+  </ion-item>
+  
+  <ion-button expand="block" fill="outline" (click)="crearPaciente()">
+    CREAR PACIENTE
+  </ion-button>
+
+</ion-content>

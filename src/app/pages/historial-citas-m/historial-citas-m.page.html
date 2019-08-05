@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Historial Citas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item tappable *ngFor="let lista of listaCitas" routerLink="/detalle-cita/historial/{{lista.medicoID}}/{{lista.citaID}}">
+      <ion-label>
+        <h2><strong>Fecha:</strong>{{lista?.fecha}} <strong>Hora:</strong>{{lista?.hora}}</h2>  
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

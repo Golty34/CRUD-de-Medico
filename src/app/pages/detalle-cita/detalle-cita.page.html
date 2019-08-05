@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Detalle de la Cita</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list-header> Informacion Médico </ion-list-header>
+  <ion-item >
+    <ion-label>
+      <ion-grid>
+        <ion-row>
+          <ion-col class="text-left" size="7"> <strong>Medico:</strong> </ion-col>
+          <ion-col class="text-center" size="5">
+            {{citaActual?.medicoID}}
+          </ion-col>
+          <ion-col class="text-left" size="7"> <strong>Consultorio:</strong> </ion-col>
+          <ion-col class="text-center" size="5">
+            {{citaActual?.Consultorio}} 
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-label>
+  </ion-item>
+  <ion-list-header > Informacion Paciente</ion-list-header>
+  <ion-item >
+    <ion-label>
+      <ion-grid>
+        <ion-row  >
+          <ion-col class="text-left" size="7"> <strong>Nombre Paciente:</strong> </ion-col>
+          <ion-col class="text-center" size="5">
+            {{citaActual?.nombrePaciente}}
+          </ion-col>
+          <ion-col class="text-left" size="7"> <strong>Fecha Cita:</strong> </ion-col>
+          <ion-col class="text-center" size="5">
+            {{citaActual?.fechaCita}} 
+          </ion-col>
+          <ion-col class="text-left" size="7"> <strong>Hora Cita:</strong> </ion-col>
+          <ion-col class="text-center" size="5">
+            {{citaActual?.horaCita}} 
+          </ion-col>
+          <ion-col class="text-left" size="8" *ngIf="iD == 'historial'"> <strong>El Pasiente atendió a la cita?:</strong> </ion-col>
+          <ion-col class="text-center" size="5" *ngIf="iD == 'historial'">
+            {{citaActual?.registro}} 
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-label>
+  </ion-item>
+  <img [hidden]="iD != 'historial'" src={{citaActual.URL}}>
+  <ion-list-header [hidden]="iD != 'cita_programada'" tappable (click)="repetirFirma()"> Repetir Firma</ion-list-header>
+
+  <canvas [hidden]="iD != 'cita_programada'" #myCanvas (touchstart)="handleStart($event)" (touchmove)="handleMove($event)" (touchend)="handleEnd($event)"></canvas>
+
+  <ion-button  fill="outline" *ngIf="iD == 'cita_programada'"  (click)="registrarLlegada()">Registrar Asistencia</ion-button>
+
+</ion-content>

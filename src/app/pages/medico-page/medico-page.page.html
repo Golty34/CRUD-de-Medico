@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button routerLink="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Lista de Medicos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list>
+        <ion-list-header>
+          <ion-label>Lista de Medicos Registrados</ion-label>
+        </ion-list-header>
+
+        <ion-item tappable *ngFor="let lista of listaMedicos" routerLink="/detalle-medico/{{ lista.cod }}">
+          <ion-label>
+            <h2>{{lista?.cod}}</h2>
+          </ion-label>
+        </ion-item>
+    </ion-list>
+  <ion-button expand="block" fill="outline" routerLink="/crear-medico">Agregar Medico Nuevo</ion-button>
+</ion-content>

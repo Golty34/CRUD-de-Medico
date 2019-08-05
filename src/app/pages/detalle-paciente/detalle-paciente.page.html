@@ -1,0 +1,73 @@
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button routerLink="/paciente-page"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{pacienteActual?.Nombre }} {{pacienteActual?.Apellido }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+    <ion-list-header> Informacion del paciente </ion-list-header>
+
+  <ion-item (click)="editarPaciente()">
+    <ion-label>
+      <ion-grid>
+        <ion-row>
+          <ion-col class="text-left" size="6"> <strong>Nombre:</strong> </ion-col>
+          <ion-col class="text-center" size="7" >
+            {{pacienteActual?.Nombre}} {{pacienteActual?.Apellido}}
+          </ion-col>
+          <ion-col class="text-left" size="6"> <strong>Identificación:</strong> </ion-col>
+          <ion-col class="text-center" size="7">
+            {{pacienteActual?.iD}} 
+          </ion-col>
+          <ion-col class="text-left" size="6"> <strong>Fecha nacimiento:</strong> </ion-col>
+          <ion-col class="text-center" size="7" >
+            {{pacienteActual?.fechaNacimiento}} 
+          </ion-col>
+          <ion-col class="text-left" size="6"> <strong>Valor Cuota:</strong> </ion-col>
+          <ion-col class="text-center" size="7">
+            {{pacienteActual?.Cuota}} 
+          </ion-col>
+          <ion-col class="text-left" size="6"> <strong>¿Se encuentra en tratamiento?:</strong> </ion-col>
+          <ion-col class="text-center" size="7">
+            {{pacienteActual?.tratamiento}} 
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-label>
+  </ion-item>
+
+  <ion-item-group *ngIf="pacienteActual?.tratamiento == 'Si'">
+    <ion-list>
+      <ion-list-header  > Cita programada </ion-list-header>
+    </ion-list>
+    <ion-item >
+      <ion-label>
+        <ion-grid>
+          <ion-row>
+            <ion-col class="text-left" size="5"> <strong>Medico:</strong> </ion-col>
+            <ion-col class="text-center" size="7" *ngIf="pacienteActual?.Nombre || pacienteActual?.Apellido">
+              {{pacienteActual?.medico}}
+            </ion-col>
+            <ion-col class="text-left" size="5"> <strong>Fecha Cita:</strong> </ion-col>
+            <ion-col class="text-center" size="7" *ngIf="pacienteActual?.iD">
+              {{pacienteActual?.fechaCita}} 
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-label>
+    </ion-item>
+    
+  </ion-item-group>
+
+
+  <ion-button expand="block" fill="outline" routerLink="/crear-cita/{{pacienteActual?.iD}}">Agendar Cita</ion-button>
+  <ion-button *ngIf="citas.Programadas != null" expand="block" fill="outline" routerLink="/citas-paciente/{{pacienteActual?.iD}}">Citas Programadas</ion-button>
+  <ion-button *ngIf="citas.Historial != null" expand="block" fill="outline" routerLink="/historial-citas/{{pacienteActual?.iD}}">Historial Citas</ion-button>
+  <ion-button expand="block" fill="outline" (click)="eliminarPaciente()">Eliminar paciente</ion-button>
+</ion-content>
+

@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button routerLink="/medico-page"></ion-back-button>
+        </ion-buttons>
+    <ion-title>{{medicoActual?.iD }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-list-header> Informacion del medico </ion-list-header>
+  </ion-list>
+  <ion-item (click)="editarMedico()">
+      <ion-label>
+        <ion-grid>
+          <ion-row>
+            <ion-col class="text-left" size="7"> <strong>Codigo Tarjeta:</strong> </ion-col>
+            <ion-col class="text-center" size="5" >
+              {{medicoActual?.iD}}
+            </ion-col>
+            <ion-col class="text-left" size="7"> <strong>Especialidad:</strong> </ion-col>
+            <ion-col class="text-center" size="5">
+              {{medicoActual?.Especialidad}} 
+            </ion-col>
+            <ion-col class="text-left" size="7"> <strong>Años de Experiencia:</strong> </ion-col>
+            <ion-col class="text-center" size="5">
+              {{medicoActual?.Exp}} 
+            </ion-col>
+            <ion-col class="text-left" size="7"> <strong>Consultorio:</strong> </ion-col>
+            <ion-col class="text-center" size="5">
+              {{medicoActual?.Consultorio}} 
+            </ion-col>
+            <ion-col class="text-left" size="7"> <strong>¿Atiende a Domicilio?</strong> </ion-col>
+            <ion-col class="text-center" size="5">
+              {{medicoActual?.Domicilio}} 
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-label>
+    </ion-item>
+
+    <ion-button *ngIf="citas.Programadas != null" expand="block" fill="outline" routerLink="/citas-medico/{{medicoActual?.iD}}">Citas Programadas</ion-button>
+    <ion-button *ngIf="citas.Historial != null" expand="block" fill="outline" routerLink="/historial-citas-m/{{medicoActual?.iD}}">Historial Citas</ion-button>
+    <ion-button expand="block" fill="outline" (click)="eliminarMedico()">Eliminar Medico</ion-button>
+</ion-content>

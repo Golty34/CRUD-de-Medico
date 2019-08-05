@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button routerLink=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>Agendar Cita Nueva</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item >
+    <ion-label>Seleccionar un medico</ion-label>
+      <ion-select [(ngModel)]="detallePaciente.medico">
+      <ion-select-option value="{{lista?.medicoID}}" *ngFor="let lista of listaMedicos">{{lista.medicoID}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  
+  <ion-item>
+      <ion-label>Fecha Cita</ion-label>
+      <ion-datetime [(ngModel)]="detallePaciente.fechaCita" displayFormat="D / MM / YYYY" pickerFormat="DD MMM YYYY" >
+      </ion-datetime>
+  </ion-item>
+
+  <ion-item>
+      <ion-label>Hora Cita</ion-label>
+      <ion-datetime [(ngModel)]="detalleCita.horaCita" displayFormat="HH:mm" pickerFormat="H:mm" >
+      </ion-datetime>
+  </ion-item>
+
+  <ion-button expand="block" fill="outline" (click) = 'crearCita()'>Generar Cita</ion-button>
+</ion-content>

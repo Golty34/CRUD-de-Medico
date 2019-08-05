@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button routerLink="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Lista de pacientes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list>
+        <ion-list-header>
+          <ion-label>Lista de Pacientes Registrados</ion-label>
+        </ion-list-header>
+
+        <ion-item tappable *ngFor="let lista of listaPacientes" routerLink="/detalle-paciente/{{ lista.nID }}">
+          <ion-label>
+            <h2>{{lista?.nID}}</h2>
+            <p>Nombre: <strong>{{lista?.nombre}}</strong><strong> {{ lista?.apellido}}</strong> 
+            </p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+  <ion-button expand="block" fill="outline" routerLink="/crear-paciente">Agregar Paciente nuevo</ion-button>
+</ion-content>
